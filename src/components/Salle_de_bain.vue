@@ -26,8 +26,8 @@ const dentFound = () => {
 }
 #dent{
     position: absolute;
-    bottom: 366px;
-    left: 129px;
+    bottom: 41%;
+    left: 10%;
     width: 10px;
     height: 10px;
     background-image: url(/indices/dent.jpg);

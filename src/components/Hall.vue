@@ -15,15 +15,20 @@
                 <p class="text3">Je vous souhaite bonne chance Capitaine Brown, je vous laisse maintenant vous occuper de cette affaire. Et quand vous aurez trouvé le tueur venez me voir pour finir votre enquête."</p>
                 <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false; showButton3 = false; tueur = true"> continuer 3</span>
             </div>
+            <div class="text" v-if="victoire">
+                <p class="text3">"Bien joué Capitaine Brown, vous avez résolu cette affaire. Je vous remercie de votre aide."</p>
+            </div>
         </div>
         <div id="formTueur" v-if="showForm">
-            <label for="teur">Tueur:</label>
-            <input type="text" id="teur" name="teur">
-            <label for="arme">Arme:</label>
-            <input type="text" id="arme" name="arme">
-            <label for="lieu">Lieu:</label>
-            <input type="text" id="lieu" name="lieu">
-            <input type="submit" value="Envoyer">
+            <form @submit.prevent="checkValues">
+                <label for="tueur">Tueur:</label>
+                <input type="text" id="tueur" name="teur" v-model="tueurValue">
+                <label for="arme">Arme:</label>
+                <input type="text" id="arme" name="arme" v-model="armeValue">
+                <label for="lieu">Lieu:</label>
+                <input type="text" id="lieu" name="lieu" v-model="lieuValue">
+                <input type="submit" value="Envoyer">
+            </form>
         </div>
     </main>
 </template>
@@ -40,12 +45,30 @@ let showButton2 = ref(false);
 let showFourthParagraph = ref(false);
 let showButton3 = ref(false);
 let tueur = ref(false);
-const showForm = ref(false);
-
+let showForm = ref(false);
+const tueurValue = ref("");
+const armeValue = ref("");
+const lieuValue = ref("");
+let victoire = ref(false);
 // define the function to open the form
 const openForm = () => {
-    showForm.value = showForm.value === false;
+    if (victoire.value) {
+        return;
+    }
+    showForm.value = !showForm.value;
 };
+
+
+function checkValues() {
+    if (
+        tueurValue.value.toLowerCase() === "camelien" &&
+        armeValue.value.toLowerCase() === "poignard" &&
+        lieuValue.value.toLowerCase() === "bibliotheque"
+    ) {
+        showForm.value = false;
+        victoire.value = true;
+    }
+}
 
 // retrieve the values from local storage and initialize the variables
 onMounted(() => {
@@ -71,34 +94,31 @@ watchEffect(() => {
     console.log(tueur.value);
 });
 
-
-
-onMounted(() => {
-    // initialise l'animation pour le premier paragraphe
-    // const typed1 = new Typed('.text1', {
-    //     strings: ["Bienvenue Capitaine Brown, merci de vous être libéré pour nous permettre d’éclaircir l’affaire. Les personnes présentes lors du meurtre sont tous revenus aujourd’hui, dans le but de se faire interroger pour nous permettre d’avoir des informations sur ce malheur."],
-    //     typeSpeed: 25,
-    //     showCursor: false,
-    //     // onComplete: () => {
-    //     //     // affiche le bouton "continuer" pour passer à la suite
-    //     //     showButton1.value = true;
-    //     //     console.log(showButton1.value);
-    //     // },
-    // });
-
-    // // initialise l'animation pour le deuxième paragraphe
-    // const typed2 = new Typed('.text2', {
-    //     strings: ["Le corps a été retrouvé et je crains qu’il ne soit encore dans le manoir, soyez prudent avec ces meurtriers, l’un d’entre eux est coupable, c’est certain. Je regrette beaucoup de ne pas avoir été présent mardi, cela ne se serait jamais produit en ma présence. Pour le bien de la famille, essayez de tout faire pour résoudre cette enquête."],
-    //     typeSpeed: 25,
-    //     showCursor: false,
-    //     // onComplete: () => {
-    //     //     // affiche le bouton "continuer" pour passer à la suite
-    //     //     showButton2.value = true;
-    //     //     console.log(showButton2.value);
-    //     // },
-    // });
-});
-
+// onMounted(() => {
+//     // initialise l'animation pour le premier paragraphe
+//     const typed1 = new Typed('.text1', {
+//         strings: ["Bienvenue Capitaine Brown, merci de vous être libéré pour nous permettre d’éclaircir l’affaire. Les personnes présentes lors du meurtre sont tous revenus aujourd’hui, dans le but de se faire interroger pour nous permettre d’avoir des informations sur ce malheur."],
+//         typeSpeed: 25,
+//         showCursor: false,
+//         // onComplete: () => {
+//         //     // affiche le bouton "continuer" pour passer à la suite
+//         //     showButton1.value = true;
+//         //     console.log(showButton1.value);
+//         // },
+//     });
+//
+//     // initialise l'animation pour le deuxième paragraphe
+//     const typed2 = new Typed('.text2', {
+//         strings: ["Le corps a été retrouvé et je crains qu’il ne soit encore dans le manoir, soyez prudent avec ces meurtriers, l’un d’entre eux est coupable, c’est certain. Je regrette beaucoup de ne pas avoir été présent mardi, cela ne se serait jamais produit en ma présence. Pour le bien de la famille, essayez de tout faire pour résoudre cette enquête."],
+//         typeSpeed: 25,
+//         showCursor: false,
+//         // onComplete: () => {
+//         //     // affiche le bouton "continuer" pour passer à la suite
+//         //     showButton2.value = true;
+//         //     console.log(showButton2.value);
+//         // },
+//     });
+// });
 
 </script>
 
@@ -127,6 +147,39 @@ onMounted(() => {
     position: absolute;
     top: 40%;
     left: 40%;
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+#formTueur input{
+    width: 100%;
+    height: 20px;
+    border: none;
+    margin: 5px 0;
+}
+#formTueur label{
+    color: white;
+}
+#formTueur input[type="submit"]{
+    width: 80px;
+    height: 25px;
+    margin-top: 10px;
+    background-color: #f5f5f5;
+    border: none;
+    cursor: pointer;
+}
+#formTueur input[type="submit"]:hover{
+    background-color: #e5e5e5;
+}
+#victoire{
+    position: absolute;
+    top: 40%;
+    left: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -135,12 +188,6 @@ onMounted(() => {
     height: 20%;
     background-color: rgba(0,0,0,0.5);
     padding: 20px;
-}
-#formTueur input{
-    width: 80%;
-    height: 20px;
-}
-#formTueur label{
     color: white;
 }
 </style>
