@@ -12,7 +12,7 @@
                 <span class="continuer" v-if="showButton2" @click="showThirdParagraph = false; showFourthParagraph = true; showButton3 = true"> continuer 2</span>
             </div>
             <div class="text" v-if="showFourthParagraph">
-                <p class="text3">Je vous souhaite bonne chance Capitaine Brown, je vous laisse maintenant vous occuper de cette affaire. Et quand vous aurez trouvé le tueur venez me voir pour finir votre enquête"</p>
+                <p class="text3">Je vous souhaite bonne chance Capitaine Brown, je vous laisse maintenant vous occuper de cette affaire. Et quand vous aurez trouvé le tueur venez me voir pour finir votre enquête."</p>
                 <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false; showButton3 = false; tueur = true"> continuer 3</span>
             </div>
         </div>
