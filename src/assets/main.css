@@ -2,4 +2,52 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Schibsted Grotesk', sans-serif;
+}
+h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+h2{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+h3{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+h4{
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+}
+p{
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+}
+.click{
+    cursor: pointer;
+}
+.dialogue{
+    position: absolute;
+    bottom: 150px;
+    left: 300px;
+    width: 30%;
+}
+.text{
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 25px;
+}
+.continuer{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color : #FFC300;
+    cursor: pointer;
 }
