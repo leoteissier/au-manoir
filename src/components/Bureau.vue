@@ -2,14 +2,31 @@
     <main id="bureau">
         <div data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000" id="pere"></div>
         <div class="dialogue" data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">
-            <div class="text" v-if="showSecondParagraph">
-                <p class="text1">Tiens donc, Capitaine ! Quelle joie de vous voir.</p>
-                <span class="continuer" v-if="showButton1" @click="showSecondParagraph = false; showThirdParagraph = true; showButton2 = true">continuer</span>
-            </div>
-            <div class="text" v-if="showThirdParagraph">
-                <p class="text2">Mon fils, c’est de mon fils que l’on parle dans cette affaire, et vous, vous vous pointez seulement 24h après cette boucherie, honnêtement si vous seriez arrivé quelques heures après la découverte du corps de mon fils, vous auriez peut-être pu attraper le meurtrier.</p>
-                <span class="continuer" v-if="showButton2" @click="showThirdParagraph = false; showFourthParagraph = true; showButton3 = true">Fouiller la salle</span>
-            </div>
+        <div class="text" v-if="showSecondParagraph">
+            <p class="text1">semble fouiller dans le bureau<br>
+            Capitaine, j’étais en train de ranger le bureau, mais enfin vous voilà.</p>
+            <span class="continuer " v-if="showButton1" @click="showSecondParagraph = false; showThirdParagraph = true; showButton2 = true">continuer</span>
+        </div>
+        <div class="text" v-if="showThirdParagraph">
+            <p class="text2">Le meurtre de mon fils doit avoir une enquête rapide, rendez vous compte à quel point cela est grave ?</p>
+            <span class="continuer" v-if="showButton2" @click="showThirdParagraph = false; showFourthParagraph = true; showButton3 = true">continuer</span>
+        </div>
+        <div class="text" v-if="showFourthParagraph">
+            <p class="text3">Il vous donnait des pots de vin afin de protéger le manoir en effectuant des rondes régulières. </p>
+            <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false; showButton3 = false; showSecondParagraph1 = true; showButton4 = true">continuer</span>
+        </div>
+        <div class="text" v-if="showSecondParagraph1">
+            <p class="text1">Comment avez vous pu venir seulement 24h après que le meurtre ait été commis, après tout ce que mon fils a fait pour vous.</p>
+            <span class="continuer " v-if="showButton4" @click="showSecondParagraph1 = false; showThirdParagraph2 = true; showButton5 = true">continuer</span>
+        </div>
+        <div class="text" v-if="showThirdParagraph2">
+            <p class="text2">Vous ne méritez pas ce badge présent sur votre uniforme, sortez de cette pièce !</p>
+            <span class="continuer" v-if="showButton5" @click="showThirdParagraph2 = false; showFourthParagraph3 = true; showButton6 = true">continuer</span>
+        </div>
+        <div class="text" v-if="showFourthParagraph3">
+            <p class="text3">Et vous osez m’accuser, vous savez les personnes derrière ces accusations ne valent rien, ils s’amusent à balancer n’importe qui pour se sortir de la prison. Cette affaire sera bientôt au tribunal, sachez le !</p>
+            <span class="continuer" v-if="showButton6" @click="showFourthParagraph3 = false; showButton6 = false">Fouiller la salle</span>
+        </div>
             <div class="text" v-if="armeOpen">
                 <p class="text2">Oh Vous avez trouvez un couteau, a qui il pourrait bien appartenir ?</p>
             </div>
@@ -32,6 +49,12 @@ let showThirdParagraph = ref(false);
 let showButton2 = ref(false);
 let showFourthParagraph = ref(false);
 let showButton3 = ref(false);
+let showSecondParagraph1 = ref(false);
+let showButton4 = ref(false);
+let showThirdParagraph2 = ref(false);
+let showButton5 = ref(false);
+let showFourthParagraph3 = ref(false);
+let showButton6 = ref(false); 
 let armeOpen = ref(false);
 // define the function to open the form
 const foundArme = () => {

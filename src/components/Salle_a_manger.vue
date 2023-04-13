@@ -4,16 +4,29 @@
     <div class="click" id="cordeFound" @click="openDiv" v-if="corde"></div>
     <div class="dialogue" data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">
         <div class="text" v-if="showSecondParagraph">
-            <p class="text1">"Tiens, tiens, on dirait que Columbo est de retour, dans tous les cas, il est important de vous dire que le suspect est assez logique, son infirmière, à peine payée, se plaignait tout le temps.</p>
+            <p class="text1">** à table, en train de fumer une cigarette **<br>
+            Tiens, tiens, on dirait que Columbo est de retour aux affaires. Si des accusations sont à mon encontre ?</p>
             <span class="continuer " v-if="showButton1" @click="showSecondParagraph = false; showThirdParagraph = true; showButton2 = true">continuer</span>
         </div>
         <div class="text" v-if="showThirdParagraph">
-            <p class="text2">Mon fils ? Il est innocent, lorsque nous avons retrouvé le cadavre, il était avec moi au salon en train d’allumer un feu.</p>
+            <p class="text2">Bien sûr que oui, cette famille imploser et l’on disait qu’une jalousie existait entre mon frère et moi même, croyez vous que je serai assez fou pour organiser son meurtre ?</p>
             <span class="continuer" v-if="showButton2" @click="showThirdParagraph = false; showFourthParagraph = true; showButton3 = true">continuer</span>
         </div>
         <div class="text" v-if="showFourthParagraph">
-            <p class="text3">Cette dernière n'était plus à l'aise au sein de la famille, elle lui volait des affaires, ce malheureux s'en est rendu compte à force, elle devait faire quelque chose, c'est elle !"</p>
-            <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false; showButton3 = false; corde = true">Fouiller la salle</span>
+            <p class="text3">Vous délirez mon Capitaine. Quant aux rumeurs sur le fait que j’aurais envoyé mon fils à ma place, c’est faux, vous me croyez capable d’effectuer cela ?</p>
+            <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false; showButton3 = false; showSecondParagraph1 = true; showButton4 = true">continuer</span>
+        </div>
+        <div class="text" v-if="showSecondParagraph1">
+            <p class="text1">Il était dans sa chambre tout au long de la soirée, je l’ai rejoint quelques temps après. Il pourra vous confirmer cet alibi si vous le voyez.</p>
+            <span class="continuer " v-if="showButton4" @click="showSecondParagraph1 = false; showThirdParagraph2 = true; showButton5 = true">continuer</span>
+        </div>
+        <div class="text" v-if="showThirdParagraph2">
+            <p class="text2">Mais ne cherchez pas ici, vous ne trouverez rien.</p>
+            <span class="continuer" v-if="showButton5" @click="showThirdParagraph2 = false; showFourthParagraph3 = true; showButton6 = true">continuer</span>
+        </div>
+        <div class="text" v-if="showFourthParagraph3">
+            <p class="text3">Pour moi, les problèmes ne justifient pas le meurtre, mais cette infirmière aurait peut-être profiter du moment pour passer à l’action, je ne sais pas vraiment ou donner de la tête après toute cette mascarade.</p>
+            <span class="continuer" v-if="showButton6" @click="showFourthParagraph3 = false; showButton6 = false; corde = true">Fouiller la salle</span>
         </div>
         <div data-aos="fade-right"  data-aos-delay="500" data-aos-duration="1000" class="text" v-if="showDiv">
             <p class="text3">Indice : Vous trouvez une corde derrière le tableau. Elle paraît effritée et abîmée.</p>
@@ -33,6 +46,12 @@ let showThirdParagraph = ref(false);
 let showButton2 = ref(false);
 let showFourthParagraph = ref(false);
 let showButton3 = ref(false); 
+let showSecondParagraph1 = ref(false);
+let showButton4 = ref(false);
+let showThirdParagraph2 = ref(false);
+let showButton5 = ref(false);
+let showFourthParagraph3 = ref(false);
+let showButton6 = ref(false); 
 let corde = ref(false);
 let showDiv = ref(false);
 

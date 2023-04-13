@@ -19,40 +19,41 @@ import {ref} from "vue";
 
 let showFirstParagraph = ref(false);
 let showSecondParagraph = ref(false);
-const sangFound = () => {
-    // deplacement de la dent
-    const sang = document.getElementById('sang');
-    if (!sang.dataset.clicked) {
-        showFirstParagraph.value = true;
-        sang.dataset.clicked = "true";
-        sang.style.bottom = '50%';
-        sang.style.right = '50%';
-        sang.style.transform = "translate(-50%, -50%) scale(4)";
-        sang.style.transition = 'all 1s';
-    } else {
-        showFirstParagraph.value = false;
-        sang.dataset.clicked = "";
-        sang.style.bottom = '20%';
-        sang.style.right = '10%';
-        sang.style.transform = "";
-    }
-}
 const dentFound = () => {
     // deplacement de la dent
     const dent = document.getElementById('dent');
     if (!dent.dataset.clicked) {
-        showSecondParagraph.value = true;
+        showFirstParagraph.value = true;
         dent.dataset.clicked = "true";
         dent.style.top = '50%';
         dent.style.left = '50%';
         dent.style.transform = "translate(-50%, -50%) scale(4)";
         dent.style.transition = 'all 1s';
     } else {
-        showSecondParagraph.value = false;
+        showFirstParagraph.value = false;
         dent.dataset.clicked = "";
         dent.style.top = '60%';
         dent.style.left = '10%';
         dent.style.transform = "";
+    }
+}
+
+const sangFound = () => {
+    // deplacement de la dent
+    const sang = document.getElementById('sang');
+    if (!sang.dataset.clicked) {
+        showSecondParagraph.value = true;
+        sang.dataset.clicked = "true";
+        sang.style.bottom = '50%';
+        sang.style.right = '50%';
+        sang.style.transform = "translate(-50%, -50%) scale(4)";
+        sang.style.transition = 'all 1s';
+    } else {
+        showSecondParagraph.value = false;
+        sang.dataset.clicked = "";
+        sang.style.bottom = '20%';
+        sang.style.right = '10%';
+        sang.style.transform = "";
     }
 }
 </script>
