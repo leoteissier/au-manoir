@@ -23,6 +23,9 @@
             <div class="text" v-if="victoire">
                 <p class="text3">"Bien joué Capitaine Brown, vous avez résolu cette affaire. Je vous remercie de votre aide."</p>
             </div>
+            <div class="text" v-if="defaite">
+                <p class="text3">"Bien joué Capitaine Brown, vous avez résolu cette affaire. Je vous remercie de votre aide."</p>
+            </div>
         </div>
         <div id="formTueur" v-if="showForm">
             <form @submit.prevent="checkValues">
@@ -77,6 +80,7 @@ const tueurValue = ref("");
 const armeValue = ref("");
 const lieuValue = ref("");
 let victoire = ref(false);
+let defaite = ref(false);
 // define the function to open the form
 const openForm = () => {
     if (victoire.value) {
@@ -93,6 +97,9 @@ function checkValues() {
     ) {
         showForm.value = false;
         victoire.value = true;
+    }else {
+        showForm.value = false;
+        defaite.value = true;
     }
 }
 

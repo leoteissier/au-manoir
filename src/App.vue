@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
 
 const scenario = ref(true);
 const closeScenario = () => {
@@ -8,61 +8,61 @@ const closeScenario = () => {
     console.log(scenario.value);
 };
 
+const soundActivated = ref(true);
+const audio = new Audio("/Cluedo.mp3"); // Remplacer par le chemin de votre fichier audio
+audio.loop = true; // Activer la lecture en boucle du son
+
+let sonActif = ref(true);
+let sonNonActif = ref(false);
+function toggleSound() {
+    if (soundActivated.value === true) {
+        audio.play(); // Joue le son
+        sonNonActif.value = true;
+        sonActif.value = false;
+    } else {
+        audio.pause(); // Pause le son
+        sonActif.value = true;
+        sonNonActif.value = false;
+    }
+    soundActivated.value = !soundActivated.value; // Inverse l'état du son activé/désactivé
+}
+
+
 </script>
-<!--<script>-->
-<!--import Hall from "./components/Hall.vue";-->
-<!--import Bureau from "./components/Bureau.vue";-->
-<!--export default {-->
-<!--    name: 'App',-->
-<!--    components: {-->
-<!--        Hall,-->
-<!--        Bureau-->
-<!--    },-->
-<!--    data() {-->
-<!--        return {-->
-<!--            scenario : true,-->
-<!--            choix: 'Hall',-->
-<!--            isActive: 'Hall',-->
-<!--            composants: [-->
-<!--                'Hall',-->
-<!--                'Bureau',-->
-<!--            ],-->
-<!--            show: true,-->
-<!--            showNavBar: false,-->
-<!--        }-->
-<!--    },-->
-<!--    computed: {-->
-<!--        selectComponent() {-->
-<!--            return this.composants.find((component) => component === this.choix)-->
-<!--        },-->
-<!--    },-->
-<!--}-->
-<!--</script>-->
 
 <template>
-  <main id="cluedo">
-      <div id="scenario" v-if="scenario">
-          <h1 data-aos="fade-down"  data-aos-offset="200" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-out">
-              Vous vous retrouvez dans la peau d’un enquêteur qui doit résoudre le meurtre d’une personne.
-              Le but final du jeu est de deviner qui à <span>tué cette personne</span>, avec <span>quelle arme</span> et dans <span>quelle pièce</span>.
-              Trois champs de saisies seront disponibles à la fin du jeu, et si ces derniers sont bons, l’ enquête sera accomplie.
-          </h1>
-          <h1 data-aos="fade-down"  data-aos-offset="200" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-out">
-              <span @click="closeScenario" class="click">Êtes-vous prêt ?</span>
-          </h1>
-      </div>
-      <nav v-if="!scenario" data-aos="fade-down" data-aos-duration="1000">
-          <router-link to="/bibliotheque" class="bibliotheque_link"></router-link>
-          <router-link to="/bureau" class="bureau_link"></router-link>
-          <router-link to="/cuisine" class="cuisine_link"></router-link>
-          <router-link to="/" class="hall_link"></router-link>
-          <router-link to="/salle-a-manger" class="salle_a_manger_link"></router-link>
-          <router-link to="/salle-de-bain" class="salle_de_bain_link"></router-link>
-          <router-link to="/salle-de-jeu" class="salle_de_jeu_link"></router-link>
-          <router-link to="/salon" class="salon_link"></router-link>
-      </nav>
-      <router-view v-if="!scenario"></router-view>
-  </main>
+    <main id="cluedo">
+        <div id="scenario" v-if="scenario">
+            <h1 data-aos="fade-down" data-aos-offset="200" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-out">
+                <span @click="closeScenario" class="click">MARDI NOIR AU MANOIR</span>
+            </h1>
+            <h2 data-aos="fade-down" data-aos-offset="200" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-out">
+                Vous êtes un <span>enquêteur</span> chargé de résoudre une enquête qui a eu lieu dans un manoir. Le <span>majordome</span> de la <span>victime</span> vous interpelle dès le début de l’histoire et vous explique que le meurtre a eu lieu et que <span>six personnes</span> se trouvaient à l’intérieur et cinq d’entre elles détiennent des <span>clés capitales</span> pour faire avancer l’enquête.
+                <br><br>
+                En effet, la <span>victime</span> est un riche milliardaire possédant de nombreuses terres. Il avait réuni les principaux membres de sa <span>famille</span>, qu’il considérait comme son troisième poumon. Dans un premier temps, son <span>neveu</span> qui avait été déshérité quelques mois plus tôt après un incident auprès de la famille. Puis, un <span>associé</span> d’une de ces entreprises, qui à découvert des transactions suspectes quelques jours avant l’invitation. Son <span>frère aîné</span>  était aussi de la partie, et a toujours été jaloux de la réussite de son frère. Sa <span>femme</span> était également présente, et était contrainte à rembourser son mari, mais manquait de fonds. Enfin, son <span>infirmière personnelle</span>  qui le soignait commençait à ne plus se sentir à l’aise au sein de sa famille, puis pour terminer son <span>père</span> qui était endetté financièrement après des placements sur des paris sportifs.
+                <br><br>
+                Votre tâche est donc d’étudier les différentes pistes, afin de dénicher et de retrouver qui à tué la victime, dans quelle pièce et avec quelle arme.
+            </h2>
+            <h1 data-aos="fade-down" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-out">
+                <span @click="closeScenario" class="click" id="ready" >Êtes-vous prêt ?</span>
+            </h1>
+        </div>
+        <div id="son">
+            <p class="click" @click="toggleSound" v-if="sonActif">Activer le son</p>
+            <p class="click" @click="toggleSound" v-if="sonNonActif">désactiver le son</p>
+        </div>
+        <nav v-if="!scenario" data-aos="fade-down" data-aos-duration="1000">
+            <router-link to="/bibliotheque" class="bibliotheque_link"></router-link>
+            <router-link to="/bureau" class="bureau_link"></router-link>
+            <router-link to="/cuisine" class="cuisine_link"></router-link>
+            <router-link to="/" class="hall_link"></router-link>
+            <router-link to="/salle-a-manger" class="salle_a_manger_link"></router-link>
+            <router-link to="/salle-de-bain" class="salle_de_bain_link"></router-link>
+            <router-link to="/salle-de-jeu" class="salle_de_jeu_link"></router-link>
+            <router-link to="/salon" class="salon_link"></router-link>
+        </nav>
+        <router-view v-if="!scenario"></router-view>
+    </main>
 </template>
 <!--<template>-->
 <!--    <main id="cluedo">-->
@@ -87,6 +87,15 @@ const closeScenario = () => {
     height: 100vh;
     overflow: hidden;
 }
+span{
+    color: #FFC700;
+}
+
+#ready{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
 #scenario{
     position: absolute;
     top: 0;
@@ -98,14 +107,27 @@ const closeScenario = () => {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 25px;
+    padding: 3em;
+}
+#scenario h2{
+    width: 90%;
+    text-align: left;
+    font-size: 1.7em;
 }
 #scenario h1{
-    width: 50%;
-    text-align: center;
+    text-align: left;
 }
-#scenario span{
-    color: #FFC300;
+#son{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 nav{
     position: absolute;
