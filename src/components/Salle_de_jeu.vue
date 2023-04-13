@@ -22,7 +22,7 @@
             <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false; showButton3 = false; tueur = true">Fouiller la salle</span>
         </div>
         <div class="text" v-if="showDiv">
-                <p class="text3"> Indice : vous remarquez que l'associé de la victime a dans sa poche, une clé anglaise, et qu’il possède des rougeurs au mains, vous faîtes comme si vous n'avez rien vu. </p>
+            <p class="text3"> Indice : vous remarquez que l'associé de la victime a dans sa poche, une clé anglaise, et qu’il possède des rougeurs au mains, vous faîtes comme si vous n'avez rien vu. </p>
         </div>
     </div>
   </main>

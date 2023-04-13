@@ -4,7 +4,7 @@
     <div class="dialogue" data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">
 
     <div class="text" v-if="showSecondParagraph">
-      <p class="text1">** bois un verre d’eau *<br> 
+      <p class="text1">bois un verre d’eau<br>
       Capitaine, c’est terrible ce qu’il nous arrive, allez-vous réussir à trouver le coupable ?
       </p>
         <span class="continuer" v-if="showButton1" @click="showSecondParagraph = false; showSecondParagraph1 = true; showButton4 = true">continuer</span>

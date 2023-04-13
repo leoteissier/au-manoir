@@ -8,8 +8,6 @@ const closeScenario = () => {
     console.log(scenario.value);
 };
 
-
-
 </script>
 <!--<script>-->
 <!--import Hall from "./components/Hall.vue";-->
