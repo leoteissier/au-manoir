@@ -1,10 +1,14 @@
 <template>
   <main id="salle_de_bain">
       <div id="dent" @click="dentFound"></div>
-      <div id="baignoire" @click="traceFound"></div>
-      <div class="dialogue" v-if="showFirstParagraph">
-          <div class="text">
+      <div id="baignoire"></div>
+      <div id="sang" @click="sangFound"></div>
+      <div class="dialogue_perso">
+          <div class="text"  v-if="showFirstParagraph">
               <p>Une dent, qu'est quelle fait la ?</p>
+          </div>
+          <div class="text" v-if="showSecondParagraph">
+              <p>Du sang, à qui il peut appartenir ?</p>
           </div>
       </div>
   </main>
@@ -14,27 +18,39 @@
 import {ref} from "vue";
 
 let showFirstParagraph = ref(false);
-// const traceFound = () => {
-//     // deplacement de la dent
-//     const dent = document.getElementById('trace');
-//     trace.style.bottom = '366px';
-//     trace.style.left = '129px';
-//     // affichage de le pop-up
-// }
+let showSecondParagraph = ref(false);
+const sangFound = () => {
+    // deplacement de la dent
+    const sang = document.getElementById('sang');
+    if (!sang.dataset.clicked) {
+        showFirstParagraph.value = true;
+        sang.dataset.clicked = "true";
+        sang.style.bottom = '50%';
+        sang.style.right = '50%';
+        sang.style.transform = "translate(-50%, -50%) scale(4)";
+        sang.style.transition = 'all 1s';
+    } else {
+        showFirstParagraph.value = false;
+        sang.dataset.clicked = "";
+        sang.style.bottom = '20%';
+        sang.style.right = '10%';
+        sang.style.transform = "";
+    }
+}
 const dentFound = () => {
     // deplacement de la dent
     const dent = document.getElementById('dent');
     if (!dent.dataset.clicked) {
-        showFirstParagraph.value = true;
+        showSecondParagraph.value = true;
         dent.dataset.clicked = "true";
         dent.style.top = '50%';
         dent.style.left = '50%';
         dent.style.transform = "translate(-50%, -50%) scale(4)";
         dent.style.transition = 'all 1s';
     } else {
-        showFirstParagraph.value = false;
+        showSecondParagraph.value = false;
         dent.dataset.clicked = "";
-        dent.style.top = '58%';
+        dent.style.top = '60%';
         dent.style.left = '10%';
         dent.style.transform = "";
     }
@@ -53,7 +69,7 @@ const dentFound = () => {
 }
 #dent{
     position: absolute;
-    top: 58%;
+    top: 60%;
     left: 10%;
     width: 30px;
     height: 30px;
@@ -64,19 +80,31 @@ const dentFound = () => {
     cursor: pointer;
     /*background-color: red;*/
 }
-#baignoire{
-    /*background-color: red;*/
+#sang{
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 464px;
-    height: 343px;
+    bottom: 20%;
+    right: 10%;
+    width: 50px;
+    height: 50px;
+    background-image: url(/indice/sang.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    /*background-color: red;*/
 }
-
 .img img{
     width:100px;
 }
-
+.dialogue_perso{
+    position: absolute;
+    bottom: 20%;
+    left: 40%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .text3{
     display: flex;
     gap: 25px;
