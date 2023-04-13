@@ -8,6 +8,8 @@ const closeScenario = () => {
     console.log(scenario.value);
 };
 
+
+
 </script>
 <!--<script>-->
 <!--import Hall from "./components/Hall.vue";-->
@@ -85,7 +87,7 @@ const closeScenario = () => {
     position: relative;
     width: 100vw;
     height: 100vh;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 #scenario{
     position: absolute;

@@ -1,11 +1,56 @@
 <template>
     <main id="bibliotheque">
         <div data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000" id="infermiere"></div>
+        <div class="dialogue" data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">
+            <div class="text" v-if="showSecondParagraph">
+                <p class="text1">** nettoie le sol **<br>
+                    "Oh Capitaine, c’est à moi d’être interrogé et d’être accusé ? Une dame de mon âge, commettant un meurtre atroce,
+                    comme non.
+                </p>
+                <span class="continuer" v-if="showButton1" @click="showSecondParagraph = false; showThirdParagraph = true; showButton2 = true">continuer</span>
+            </div>
+            <div class="text" v-if="showThirdParagraph">
+                <p class="text2">Écoutez, si une personne doit être accusée, ce serait son mauvais et jaloux frère aîné
+                    qui le désirait fortement, dirigez-vous sur cette piste ou bien, cherchez, mais ce n’est pas ici que
+                    vous trouverez la coupable… "
+                </p>
+                <span class="continuer" v-if="showButton2" @click="showThirdParagraph = false">Fouiller la salle</span>
+            </div>
+            <div class="text" v-if="livreOpen">
+                <p class="text2">"Oh Capitaine, vous avez trouvez un livre avec du sang dessus, je pense que c’est le livre
+                    de la coupable, mais a qui peux appartenir ce livre ?"
+                </p>
+            </div>
+        </div>
+        <div id="livre" @click="foundlivre"></div>
     </main>
 </template>
 
 <script setup>
+import {ref} from "vue";
 
+let showSecondParagraph = ref(true);
+let showButton1 = ref(true);
+let showThirdParagraph = ref(false);
+let showButton2 = ref(false);
+let livreOpen = ref(false)
+
+const foundlivre = () => {
+    livreOpen.value = !livreOpen.value
+    const dent = document.getElementById('livre');
+    if (!livre.dataset.clicked) {
+        livre.dataset.clicked = "true";
+        livre.style.top = '50%';
+        livre.style.left = '50%';
+        livre.style.transform = "translate(-50%, -50%) scale(4)";
+        livre.style.transition = 'all 1s';
+    } else {
+        livre.dataset.clicked = "";
+        livre.style.top = '48%';
+        livre.style.left = '55%';
+        livre.style.transform = "";
+    }
+}
 </script>
 
 <style scoped>
@@ -27,5 +72,17 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+#livre{
+    position: absolute;
+    top: 48%;
+    left: 55%;
+    width: 25px;
+    height: 25px;
+    background-image: url(/indice/livre.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
 }
 </style>

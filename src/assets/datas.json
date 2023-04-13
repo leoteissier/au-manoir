@@ -1,0 +1,41 @@
+{
+  "biblotheque": {
+    "dialogue1": {
+      "text" : "Bienvenue Capitaine Brown, merci de vous être libéré pour nous permettre d’éclaircir l’affaire. Les personnes présentes lors du meurtre sont tous revenus aujourd’hui, dans le but de se faire interroger pour nous permettre d’avoir des informations sur ce malheur.",
+      "etat" : "true"
+    },
+    "dialogue2": {
+      "text" : "Le corps a été retrouvé et je crains qu’il ne soit encore dans le manoir, soyez prudent avec ces meurtriers, l’un d’entre eux est coupable, c’est certain. Je regrette beaucoup de ne pas avoir été présent mardi, cela ne se serait jamais produit en ma présence. Pour le bien de la famille, essayez de tout faire pour résoudre cette enquête.",
+      "etat" : "false"
+    },
+    "dialogue3": {
+      "text": "Je vous souhaite bonne chance Capitaine Brown, je vous laisse maintenant vous occuper de cette affaire. Et quand vous aurez trouvé le tueur venez me voir pour finir votre enquête.",
+      "etat" : "false"
+    },
+    "dialogue4": {
+      "text": "Bien joué Capitaine Brown, vous avez résolu cette affaire. Je vous remercie de votre aide.",
+      "etat" : "false"
+    }
+  },
+  "Bureau": {
+
+  },
+  "Cuisine": {
+
+  },
+  "Hall": {
+
+  },
+  "Salle a manger": {
+
+  },
+  "Salle de bain": {
+
+  },
+  "Salle de jeu": {
+
+  },
+  "salon": {
+
+  }
+}

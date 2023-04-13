@@ -1,7 +1,7 @@
 <template>
   <main id="salle_a_manger">
     <div data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000" id="frere"></div>
-    <div class="click" id="corde" @click="openDiv" v-if="corde"></div>
+    <div class="click" id="cordeFound" @click="openDiv" v-if="corde"></div>
     <div class="dialogue" data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">
         <div class="text" v-if="showSecondParagraph">
             <p class="text1">"Tiens, tiens, on dirait que Columbo est de retour, dans tous les cas, il est important de vous dire que le suspect est assez logique, son infirmière, à peine payée, se plaignait tout le temps.</p>
@@ -16,7 +16,8 @@
             <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false; showButton3 = false; corde = true">Fouiller la salle</span>
         </div>
         <div data-aos="fade-right"  data-aos-delay="500" data-aos-duration="1000" class="text" v-if="showDiv">
-            <p class="text3">Indice : Vous trouvez une corde derrière le tableau. Elle paraît effritée et abîmée.</p><div class="img"><img @click="openDiv" src="/arme/rope.png" alt=""></div>
+            <p class="text3">Indice : Vous trouvez une corde derrière le tableau. Elle paraît effritée et abîmée.</p>
+            <div id="corde" @click="openDiv"></div>
         </div>
     </div>
   </main>
@@ -64,19 +65,21 @@ const openDiv = () => {
     background-repeat: no-repeat;
 }
 
-#corde{
+#cordeFound{
     position: absolute;
     width: 100px;
     height: 100px;
     top: 25%;
     left: 72%;
 }
-
-.img img{
-    width:100px;
+#corde{
+    width: 150px;
+    height: 100px;
+    background-image: url(/arme/rope.png);
+    background-size: cover;
+    background-repeat: no-repeat;
     cursor: pointer;
 }
-
 .text3{
     display: flex;
     gap: 25px;
