@@ -37,7 +37,7 @@ let livreOpen = ref(false)
 
 const foundlivre = () => {
     livreOpen.value = !livreOpen.value
-    const dent = document.getElementById('livre');
+    const livre = document.getElementById('livre');
     if (!livre.dataset.clicked) {
         livre.dataset.clicked = "true";
         livre.style.top = '50%';

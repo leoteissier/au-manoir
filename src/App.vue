@@ -2,7 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from "vue";
 
-const scenario = ref(false);
+const scenario = ref(true);
 const closeScenario = () => {
     scenario.value = false;
     console.log(scenario.value);
