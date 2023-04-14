@@ -4,16 +4,18 @@
     <div class="click" id="cordeFound" @click="openDiv" v-if="corde"></div>
     <div class="dialogue" data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">
         <div class="text" v-if="showSecondParagraph">
-            <p class="text1">** à table, en train de fumer une cigarette **<br>
-            Tiens, tiens, on dirait que Columbo est de retour aux affaires. Si des accusations sont à mon encontre ?</p>
+            <p class="text1">
+                Tiens, tiens, on dirait que Columbo est de retour aux affaires. Si des accusations sont à mon encontre ?</p>
             <span class="continuer " v-if="showButton1" @click="showSecondParagraph = false; showThirdParagraph = true; showButton2 = true">continuer</span>
         </div>
         <div class="text" v-if="showThirdParagraph">
-            <p class="text2">Bien sûr que oui, cette famille imploser et l’on disait qu’une jalousie existait entre mon frère et moi même, croyez vous que je serai assez fou pour organiser son meurtre ?</p>
+            <p class="text2">Bien sûr que oui, cette famille devait imploser depuis longtemps, et l’on disait qu’une jalousie existait entre mon frère et moi-même,
+                croyez vous que je serai assez fou pour organiser son meurtre ?</p>
             <span class="continuer" v-if="showButton2" @click="showThirdParagraph = false; showFourthParagraph = true; showButton3 = true">continuer</span>
         </div>
         <div class="text" v-if="showFourthParagraph">
-            <p class="text3">Vous délirez mon Capitaine. Quant aux rumeurs sur le fait que j’aurais envoyé mon fils à ma place, c’est faux, vous me croyez capable d’effectuer cela ?</p>
+            <p class="text3">Vous délirez mon Capitaine. Quant aux rumeurs sur le fait que j’aurais envoyé mon fils à ma place, c’est faux, vous me croyez capable d’effectuer cela ?
+                Il était dans sa chambre tout au long de la soirée, je l’ai rejoint quelque temps après. Vous délirez mon Capitaine. </p>
             <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false; showButton3 = false; showSecondParagraph1 = true; showButton4 = true">continuer</span>
         </div>
         <div class="text" v-if="showSecondParagraph1">
@@ -25,7 +27,7 @@
             <span class="continuer" v-if="showButton5" @click="showThirdParagraph2 = false; showFourthParagraph3 = true; showButton6 = true">continuer</span>
         </div>
         <div class="text" v-if="showFourthParagraph3">
-            <p class="text3">Pour moi, les problèmes ne justifient pas le meurtre, mais cette infirmière aurait peut-être profiter du moment pour passer à l’action, je ne sais pas vraiment ou donner de la tête après toute cette mascarade.</p>
+            <p class="text3">Pour moi, les problèmes ne justifient pas le meurtre, mais cette infirmière aurait peut-être profité du moment pour passer à l’action. Je ne sais pas vraiment ou donner de la tête après toute cette mascarade.</p>
             <span class="continuer" v-if="showButton6" @click="showFourthParagraph3 = false; showButton6 = false; corde = true">Fouiller la salle</span>
         </div>
         <div data-aos="fade-right"  data-aos-delay="500" data-aos-duration="1000" class="text" v-if="showDiv">

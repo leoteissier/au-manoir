@@ -3,7 +3,7 @@
         <div data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000" id="infermiere"></div>
         <div class="dialogue" data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">
             <div class="text" v-if="showSecondParagraph">
-                <p class="text1">range des livres<br>
+                <p class="text1">
                     Capitaine, c’est à moi d’être interrogé et d’être accusé ? Une dame de mon âge, commettant un meurtre atroce.
                 </p>
                 <span class="continuer" v-if="showButton1" @click="showSecondParagraph = false; showThirdParagraph = true; showButton2 = true">continuer</span>
@@ -18,8 +18,7 @@
                   <span class="continuer" v-if="showButton3" @click="showFourthParagraph = false">Fouiller la salle</span>
             </div>
             <div class="text" v-if="livreOpen">
-                <p class="text2">"Oh Capitaine, vous avez trouvez un livre avec du sang dessus, je pense que c’est le livre
-                    de la coupable, mais a qui peux appartenir ce livre ?"
+                <p class="text2">"Ces livres ne m'ont l'air pas a leur place, du sang en plus se trouve sur ces livres."
                 </p>
             </div>
         </div>

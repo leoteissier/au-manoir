@@ -3,7 +3,7 @@
         <div data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000" id="pere"></div>
         <div class="dialogue" data-aos="fade-right" data-aos-delay="1000" data-aos-duration="1000">
         <div class="text" v-if="showSecondParagraph">
-            <p class="text1">semble fouiller dans le bureau<br>
+            <p class="text1">semble rangers le bureau<br>
             Capitaine, j’étais en train de ranger le bureau, mais enfin vous voilà.</p>
             <span class="continuer " v-if="showButton1" @click="showSecondParagraph = false; showThirdParagraph = true; showButton2 = true">continuer</span>
         </div>

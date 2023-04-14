@@ -46,6 +46,9 @@ function toggleSound() {
             <h1 data-aos="fade-down" data-aos-delay="500" data-aos-duration="1000" data-aos-easing="ease-in-out">
                 <span @click="closeScenario" class="click" id="ready" >Êtes-vous prêt ?</span>
             </h1>
+            <div id="nom">
+                <p>Pablo MOURATO / Gregory LAISSUS / Léo TEISSIER / Louis PEYRARD</p>
+            </div>
         </div>
         <div id="son">
             <p class="click" @click="toggleSound" v-if="sonActif">Activer le son</p>
@@ -86,6 +89,13 @@ function toggleSound() {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+}
+#nom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    z-index: 999;
 }
 span{
     color: #FFC700;

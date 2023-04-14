@@ -24,7 +24,7 @@
                 <p class="text3">"Bien joué Capitaine Brown, vous avez résolu cette affaire. Je vous remercie de votre aide."</p>
             </div>
             <div class="text" v-if="defaite">
-                <p class="text3">"Bien joué Capitaine Brown, vous avez résolu cette affaire. Je vous remercie de votre aide."</p>
+                <p class="text3">"Dommage ce n'est pas la bonne combinaison, il faut continuer à chercher."</p>
             </div>
         </div>
         <div id="formTueur" v-if="showForm">
@@ -40,8 +40,8 @@
                 </select>
                 <label for="arme">Arme:</label>
                 <select id="arme" name="arme" v-model="armeValue">
-                    <option value="pistolet">Pistolet</option>
-                    <option value="poison">Poison</option>
+                    <option value="chandelier">Chandelier</option>
+                    <option value="clé">Clé</option>
                     <option value="poignard">Poignard</option>
                     <option value="corde">Corde</option>
                 </select>
